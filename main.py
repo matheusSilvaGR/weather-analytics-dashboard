@@ -1,6 +1,11 @@
 from fastapi import FastAPI
 from services.weather_service import buscar_clima
 
+from database import engine
+from models import Base
+
+Base.metadata.create_all(bind=engine)
+
 app = FastAPI()
 
 @app.get("/")
